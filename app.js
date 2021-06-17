@@ -20,9 +20,10 @@ async function displayWeather() {
   main.append(loading);
   const data = await fetchData();
   console.log(data);
-  const weather = createContainer(data);
   main.innerHTML = "";
-  main.append(weather);
+  if (data.cod === "404") return main.append(error);
+
+  return main.append(createContainer(data));
 }
 
 function createContainer(data) {
@@ -42,3 +43,6 @@ function createContainer(data) {
 
 const loading = document.createElement("div");
 loading.textContent = "Loading...";
+
+const error = document.createElement("div");
+error.textContent = "Couldn't find that place - did you spell it correctly?";
