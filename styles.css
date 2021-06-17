@@ -13,9 +13,8 @@ body {
 header {
   width: 100%;
   min-height: 4rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  place-items: center;
   background-color: rgb(117, 172, 173);
 }
 
@@ -27,6 +26,8 @@ main {
   background-color: rgb(175, 186, 207);
   width: 100%;
   min-height: 100%;
+  display: grid;
+  place-items: center;
 }
 
 footer {

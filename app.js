@@ -3,7 +3,7 @@ const key = "bcd9efe90d4b0bbc5b7e653dc9004c70";
 const button = document.querySelector("button");
 button.addEventListener("click", displayWeather);
 
-const wrapper = document.querySelector(".wrapper");
+const main = document.querySelector("main");
 
 async function fetchData() {
   const searchTerm = document.querySelector("input").value;
@@ -19,7 +19,7 @@ async function displayWeather() {
   const data = await fetchData();
   console.log(data);
   const weather = createContainer(data);
-  wrapper.append(weather);
+  main.append(weather);
 }
 
 function createContainer(data) {
