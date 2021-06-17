@@ -4,12 +4,35 @@ body {
 }
 
 .wrapper {
-  background-color: cadetblue;
   height: 100vh;
   display: grid;
+  grid-template-rows: auto 1fr auto;
   place-items: center;
+}
+
+header {
+  width: 100%;
+  min-height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(117, 172, 173);
 }
 
 .search-bar {
   height: 30px;
+}
+
+main {
+  background-color: rgb(175, 186, 207);
+  width: 100%;
+  min-height: 100%;
+}
+
+footer {
+  background-color: rgb(202, 150, 113);
+  min-height: 4rem;
+  width: 100%;
+  display: grid;
+  place-items: center;
 }
