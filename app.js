@@ -16,9 +16,12 @@ async function fetchData() {
 }
 
 async function displayWeather() {
+  main.innerHTML = "";
+  main.append(loading);
   const data = await fetchData();
   console.log(data);
   const weather = createContainer(data);
+  main.innerHTML = "";
   main.append(weather);
 }
 
@@ -36,3 +39,6 @@ function createContainer(data) {
 
   return container;
 }
+
+const loading = document.createElement("div");
+loading.textContent = "Loading...";
