@@ -1,3 +1,13 @@
+:root {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -12,9 +22,11 @@ body {
 
 header {
   width: 100%;
+  padding: 1rem;
   min-height: 4rem;
-  display: grid;
-  place-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: rgb(117, 172, 173);
 }
 
@@ -28,6 +40,31 @@ main {
   min-height: 100%;
   display: grid;
   place-items: center;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "main-temp icon"
+    "title title"
+    "info info";
+  place-items: start;
+}
+
+.title {
+  grid-area: title;
+}
+
+.main-temp {
+  grid-area: main-temp;
+  font-size: 6rem;
+}
+
+.icon {
+  place-self: center;
+  grid-area: icon;
+  width: 50%;
 }
 
 footer {
