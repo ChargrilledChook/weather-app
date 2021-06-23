@@ -33,8 +33,18 @@ function createContainer(data) {
   header.textContent = `${data.name}, ${data.sys.country}`;
 
   const tempContainer = document.createElement("div");
-  const temp = data.main.temp;
-  tempContainer.textContent = `Current temperature in ${data.name} is ${temp} degrees celcius`;
+  const current = document.createElement("div");
+  const min = document.createElement("div");
+  const max = document.createElement("div");
+
+  const currTemp = data.main.temp;
+  const minTemp = data.main.temp_min;
+  const maxTemp = data.main.temp_max;
+  current.textContent = `Current temperature in ${data.name} is ${currTemp} degrees celcius`;
+  min.textContent = `Min: ${minTemp}`
+  max.textContent = `Max: ${maxTemp}`
+  tempContainer.append(current, min, max)
+
 
   container.append(header, tempContainer);
 
