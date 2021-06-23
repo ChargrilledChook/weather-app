@@ -5,9 +5,13 @@ button.addEventListener("click", displayWeather);
 
 const main = document.querySelector("main");
 
+let units = 'metric'
+const toggle = document.querySelector('#metricToggle')
+toggle.addEventListener('click', ()=> units = units === 'metric' ? 'imperial' : 'metric')
+
 async function fetchData() {
   const searchTerm = document.querySelector("input").value;
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&appid=${key}&units=metric`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&appid=${key}&units=${units}`;
   console.log(url);
   const response = await fetch(url, { mode: "cors" });
   const data = await response.json();
@@ -36,14 +40,22 @@ function createContainer(data) {
   const current = document.createElement("div");
   const min = document.createElement("div");
   const max = document.createElement("div");
+  const icon = document.createElement("img");
 
   const currTemp = data.main.temp;
   const minTemp = data.main.temp_min;
   const maxTemp = data.main.temp_max;
-  current.textContent = `Current temperature in ${data.name} is ${currTemp} degrees celcius`;
+
+  const iconId = data.weather[0].icon;
+  console.log(iconId)
+  const iconSrc = `http://openweathermap.org/img/w/${iconId}.png`
+  icon.src = iconSrc;
+
+  current.textContent = `Current temperature in ${data.name} is ${currTemp} degrees ${units}`;
   min.textContent = `Min: ${minTemp}`
   max.textContent = `Max: ${maxTemp}`
-  tempContainer.append(current, min, max)
+
+  tempContainer.append(current, min, max, icon)
 
 
   container.append(header, tempContainer);
