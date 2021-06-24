@@ -18,7 +18,7 @@ body {
   margin: 0;
   padding: 0;
   font-size: 1.6rem;
-  color: var(--blackCol);
+  color: var(--whiteCol);
   font-family: "PT Sans", sans-serif;
 }
 
@@ -37,7 +37,7 @@ header {
   justify-content: space-between;
   align-items: center;
   color: var(--whiteCol);
-  background-color: var(--mainCol);
+  background-color: var(--secCol);
 }
 
 header > form {
@@ -66,7 +66,7 @@ header > form {
 }
 
 main {
-  background-color: var(--whiteCol);
+  background-color: var(--tertCol);
   width: 100%;
   min-height: 100%;
   display: grid;
@@ -99,8 +99,8 @@ main {
 }
 
 footer {
-  color: var(--whiteCol);
-  background-color: var(--tertCol);
+  color: var(--blackCol);
+  background-color: var(--whiteCol);
   min-height: 4rem;
   width: 100%;
   display: flex;
