@@ -1,13 +1,16 @@
 const key = "bcd9efe90d4b0bbc5b7e653dc9004c70";
 
-const button = document.querySelector("button");
+const button = document.querySelector("#geo-search");
 button.addEventListener("click", displayWeather);
 
 const main = document.querySelector("main");
 
-let units = 'metric'
-const toggle = document.querySelector('#metricToggle')
-toggle.addEventListener('click', ()=> units = units === 'metric' ? 'imperial' : 'metric')
+let units = "metric";
+const toggle = document.querySelector("#metricToggle");
+toggle.addEventListener(
+  "click",
+  () => (units = units === "metric" ? "imperial" : "metric")
+);
 
 async function fetchData() {
   const searchTerm = document.querySelector("input").value;
@@ -19,7 +22,8 @@ async function fetchData() {
   return data;
 }
 
-async function displayWeather() {
+async function displayWeather(event) {
+  event.preventDefault();
   main.innerHTML = "";
   main.append(loading);
   const data = await fetchData();
@@ -47,16 +51,15 @@ function createContainer(data) {
   const maxTemp = data.main.temp_max;
 
   const iconId = data.weather[0].icon;
-  console.log(iconId)
-  const iconSrc = `http://openweathermap.org/img/w/${iconId}.png`
+  console.log(iconId);
+  const iconSrc = `http://openweathermap.org/img/w/${iconId}.png`;
   icon.src = iconSrc;
 
   current.textContent = `Current temperature in ${data.name} is ${currTemp} degrees ${units}`;
-  min.textContent = `Min: ${minTemp}`
-  max.textContent = `Max: ${maxTemp}`
+  min.textContent = `Min: ${minTemp}`;
+  max.textContent = `Max: ${maxTemp}`;
 
-  tempContainer.append(current, min, max, icon)
-
+  tempContainer.append(current, min, max, icon);
 
   container.append(header, tempContainer);
 
