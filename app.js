@@ -55,7 +55,7 @@ function createContainer(data) {
 
   const iconId = data.weather[0].icon;
   console.log(iconId);
-  const iconSrc = `http://openweathermap.org/img/w/${iconId}.png`;
+  const iconSrc = `http://openweathermap.org/img/wn/${iconId}@2x.png`;
   icon.src = iconSrc;
 
   current.textContent = `Current temperature in ${data.name} is ${currTemp} degrees ${units}`;
