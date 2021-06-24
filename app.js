@@ -1,3 +1,6 @@
+// Standard internationalisation API, which we use to convert country codes to country names
+const countryCodes = new Intl.DisplayNames(["en"], { type: "region" });
+
 const key = "bcd9efe90d4b0bbc5b7e653dc9004c70";
 
 const button = document.querySelector("#geo-search");
@@ -38,7 +41,7 @@ function createContainer(data) {
   const container = document.createElement("div");
   container.classList.add("result");
   const header = document.createElement("h2");
-  header.textContent = `${data.name}, ${data.sys.country}`;
+  header.textContent = `${data.name}, ${countryCodes.of(data.sys.country)}`;
 
   const tempContainer = document.createElement("div");
   const current = document.createElement("div");
