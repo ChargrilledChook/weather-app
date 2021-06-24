@@ -1,9 +1,11 @@
 :root {
   box-sizing: border-box;
   font-size: 62.5%;
-  --mainCol: red;
-  --secCol: blue;
-  --tertCol: green;
+  --mainCol: #1b264f;
+  --secCol: #274690;
+  --tertCol: #576ca8;
+  --whiteCol: #f5f3f5;
+  --blackCol: #302b27;
 }
 
 *,
@@ -16,6 +18,7 @@ body {
   margin: 0;
   padding: 0;
   font-size: 1.6rem;
+  color: var(--blackCol);
 }
 
 .wrapper {
@@ -32,7 +35,8 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(117, 172, 173);
+  color: var(--whiteCol);
+  background-color: var(--mainCol);
 }
 
 header > form {
@@ -60,7 +64,7 @@ header > form {
 }
 
 main {
-  background-color: rgb(175, 186, 207);
+  background-color: var(--whiteCol);
   width: 100%;
   min-height: 100%;
   display: grid;
@@ -93,7 +97,8 @@ main {
 }
 
 footer {
-  background-color: rgb(202, 150, 113);
+  color: var(--whiteCol);
+  background-color: var(--tertCol);
   min-height: 4rem;
   width: 100%;
   display: flex;
