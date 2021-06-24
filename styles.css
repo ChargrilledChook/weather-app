@@ -1,5 +1,9 @@
 :root {
   box-sizing: border-box;
+  font-size: 62.5%;
+  --mainCol: red;
+  --secCol: blue;
+  --tertCol: green;
 }
 
 *,
@@ -11,6 +15,7 @@
 body {
   margin: 0;
   padding: 0;
+  font-size: 1.6rem;
 }
 
 .wrapper {
@@ -30,8 +35,28 @@ header {
   background-color: rgb(117, 172, 173);
 }
 
+header > form {
+  display: flex;
+}
+
 .search-bar {
-  height: 30px;
+  padding-left: 8px;
+  height: 3.3rem;
+  border-bottom-left-radius: 8px;
+  border-top-left-radius: 8px;
+  border: none;
+  outline: none;
+}
+
+#geo-search {
+  border: none;
+  border-bottom-right-radius: 8px;
+  border-top-right-radius: 8px;
+  outline: none;
+}
+
+#geo-search:hover {
+  background-color: rgb(183, 192, 204);
 }
 
 main {
