@@ -1,3 +1,5 @@
+/* Variables, layout and boilerplate ==================================*/
+
 :root {
   box-sizing: border-box;
   font-size: 62.5%;
@@ -22,12 +24,16 @@ body {
   font-family: "PT Sans", sans-serif;
 }
 
+/* Layout ==================================*/
+
 .wrapper {
   height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
   place-items: center;
 }
+
+/* Header ==================================*/
 
 header {
   width: 100%;
@@ -71,6 +77,8 @@ header > form {
   align-items: center;
 }
 
+/* Main / center ==================================*/
+
 main {
   background-color: var(--tertCol);
   width: 100%;
@@ -81,16 +89,19 @@ main {
 
 .container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 25rem 25rem;
+  gap: 1rem;
   grid-template-areas:
     "main-temp icon"
     "title title"
+    "description description"
     "info info";
   place-items: start;
 }
 
 .title {
   grid-area: title;
+  margin: 0;
 }
 
 .main-temp {
@@ -98,11 +109,21 @@ main {
   font-size: 6rem;
 }
 
+.description {
+  grid-area: description;
+}
+
+.description {
+  text-transform: capitalize;
+}
+
 .icon {
   place-self: center;
   grid-area: icon;
   width: 50%;
 }
+
+/* Footer ==================================*/
 
 footer {
   color: var(--blackCol);
@@ -130,8 +151,8 @@ footer > a:hover {
   text-decoration: underline;
 }
 
+/* Slider toggle ==================================*/
 /* From w3schools  for slider  https://www.w3schools.com/howto/howto_css_switch.asp */
-
 /* The switch - the box around the slider */
 .switch {
   position: relative;

@@ -53,15 +53,19 @@ function updateData(data) {
 
 function createContainer(data) {
   const container = document.createElement("div");
-  container.classList.add("result");
-  const header = document.createElement("h2");
-  header.textContent = `${data.name}, ${countryCodes.of(data.sys.country)}`;
+  container.classList.add("container");
 
-  const tempContainer = document.createElement("div");
+  const title = document.createElement("h2");
+  title.classList.add("title");
+  title.textContent = `${data.name}, ${countryCodes.of(data.sys.country)}`;
   const current = document.createElement("div");
+  current.classList.add("main-temp");
+  const description = document.createElement("div");
+  description.classList.add("description");
   const min = document.createElement("div");
   const max = document.createElement("div");
   const icon = document.createElement("img");
+  icon.classList.add("icon");
 
   const currTemp = convertTemp(data.main.temp, units);
   const minTemp = convertTemp(data.main.temp_min, units);
@@ -72,15 +76,12 @@ function createContainer(data) {
   const iconSrc = `http://openweathermap.org/img/wn/${iconId}@2x.png`;
   icon.src = iconSrc;
 
-  current.textContent = `Current temperature in ${
-    data.name
-  } is ${currTemp} degrees ${units.slice(0, 1)}`;
+  current.textContent = `${currTemp} °${units.slice(0, 1).toUpperCase()}`;
+  description.textContent = data.weather[0].description;
   min.textContent = `Min: ${minTemp}`;
   max.textContent = `Max: ${maxTemp}`;
 
-  tempContainer.append(current, min, max, icon);
-
-  container.append(header, tempContainer);
+  container.append(current, title, description, min, max, icon);
 
   return container;
 }
