@@ -96,10 +96,10 @@ const error = document.createElement("div");
 error.textContent = "Couldn't find that place - did you spell it correctly?";
 
 function convertTemp(temp, units) {
-  if (units === "celcius") return temp;
+  if (units === "celcius") return Math.round(temp);
 
   // + String conversion is used to drop  extra 0s ie 15.00
-  return +((temp * 9) / 5 + 32).toFixed(2);
+  return Math.round(((temp * 9) / 5 + 32))
 }
 
 displayWeather();
