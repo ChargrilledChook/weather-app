@@ -19,9 +19,15 @@
 body {
   margin: 0;
   padding: 0;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   color: var(--whiteCol);
   font-family: "PT Sans", sans-serif;
+}
+
+/* General Styles  */
+
+h2 {
+  margin: 0;
 }
 
 /* Layout ==================================*/
@@ -44,6 +50,12 @@ header {
   align-items: center;
   color: var(--whiteCol);
   background-color: var(--secCol);
+}
+
+.site-logo {
+  margin: 0;
+  display: flex;
+  align-items: center;
 }
 
 header > form {
@@ -107,10 +119,12 @@ main {
 .main-temp {
   grid-area: main-temp;
   font-size: 6rem;
+  align-self: center;
 }
 
 .description {
   grid-area: description;
+  font-size: 2rem;
 }
 
 .description {

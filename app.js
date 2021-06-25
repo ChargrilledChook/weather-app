@@ -10,6 +10,8 @@ const main = document.querySelector("main");
 
 const toggle = document.querySelector(".switch input");
 
+const headerIcon = document.querySelector("#head-icon");
+
 let units = "celcius";
 
 toggle.addEventListener("click", () => {
@@ -75,6 +77,7 @@ function createContainer(data) {
   console.log(iconId);
   const iconSrc = `http://openweathermap.org/img/wn/${iconId}@2x.png`;
   icon.src = iconSrc;
+  headerIcon.src = iconSrc;
 
   current.textContent = `${currTemp} °${units.slice(0, 1).toUpperCase()}`;
   description.textContent = data.weather[0].description;
