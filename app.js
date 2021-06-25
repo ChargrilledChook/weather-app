@@ -20,7 +20,7 @@ toggle.addEventListener("click", () => {
 let currentData;
 
 async function fetchData() {
-  const searchTerm = document.querySelector("input").value;
+  const searchTerm = document.querySelector("input").value || "newcastle";
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&appid=${key}&units=metric`;
   console.log(url);
   const response = await fetch(url, { mode: "cors" });
@@ -30,16 +30,19 @@ async function fetchData() {
 }
 
 async function displayWeather(event) {
-  event.preventDefault();
-  main.innerHTML = "";
-  main.append(loading);
-  const data = await fetchData();
-  console.log(data);
-  main.innerHTML = "";
-  if (data.cod === "400" || data.cod === "404") return main.append(error);
+  try {
+    event.preventDefault();
+  } finally {
+    main.innerHTML = "";
+    main.append(loading);
+    const data = await fetchData();
+    console.log(data);
+    main.innerHTML = "";
+    if (data.cod === "400" || data.cod === "404") return main.append(error);
 
-  currentData = data;
-  return main.append(createContainer(data));
+    currentData = data;
+    return main.append(createContainer(data));
+  }
 }
 
 function updateData(data) {
@@ -94,3 +97,5 @@ function convertTemp(temp, units) {
   // + String conversion is used to drop  extra 0s ie 15.00
   return +((temp * 9) / 5 + 32).toFixed(2);
 }
+
+displayWeather();
