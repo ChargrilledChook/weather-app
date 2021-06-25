@@ -8,16 +8,20 @@ button.addEventListener("click", displayWeather);
 
 const main = document.querySelector("main");
 
-let units = "metric";
-const toggle = document.querySelector("#metricToggle");
-toggle.addEventListener(
-  "click",
-  () => (units = units === "metric" ? "imperial" : "metric")
-);
+const toggle = document.querySelector(".switch input");
+
+let units = "celcius";
+
+toggle.addEventListener("click", () => {
+  units = units === "celcius" ? "fahrenheit" : "celcius";
+  updateData(currentData);
+});
+
+let currentData;
 
 async function fetchData() {
   const searchTerm = document.querySelector("input").value;
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&appid=${key}&units=${units}`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&appid=${key}&units=metric`;
   console.log(url);
   const response = await fetch(url, { mode: "cors" });
   const data = await response.json();
@@ -32,9 +36,16 @@ async function displayWeather(event) {
   const data = await fetchData();
   console.log(data);
   main.innerHTML = "";
-  if (data.cod === "404") return main.append(error);
+  if (data.cod === "400" || data.cod === "404") return main.append(error);
 
+  currentData = data;
   return main.append(createContainer(data));
+}
+
+function updateData(data) {
+  const updated = createContainer(data);
+  main.innerHTML = "";
+  main.append(updated);
 }
 
 function createContainer(data) {
@@ -49,16 +60,18 @@ function createContainer(data) {
   const max = document.createElement("div");
   const icon = document.createElement("img");
 
-  const currTemp = data.main.temp;
-  const minTemp = data.main.temp_min;
-  const maxTemp = data.main.temp_max;
+  const currTemp = convertTemp(data.main.temp, units);
+  const minTemp = convertTemp(data.main.temp_min, units);
+  const maxTemp = convertTemp(data.main.temp_max, units);
 
   const iconId = data.weather[0].icon;
   console.log(iconId);
   const iconSrc = `http://openweathermap.org/img/wn/${iconId}@2x.png`;
   icon.src = iconSrc;
 
-  current.textContent = `Current temperature in ${data.name} is ${currTemp} degrees ${units}`;
+  current.textContent = `Current temperature in ${
+    data.name
+  } is ${currTemp} degrees ${units.slice(0, 1)}`;
   min.textContent = `Min: ${minTemp}`;
   max.textContent = `Max: ${maxTemp}`;
 
@@ -74,3 +87,10 @@ loading.textContent = "Loading...";
 
 const error = document.createElement("div");
 error.textContent = "Couldn't find that place - did you spell it correctly?";
+
+function convertTemp(temp, units) {
+  if (units === "celcius") return temp;
+
+  // + String conversion is used to drop  extra 0s ie 15.00
+  return +((temp * 9) / 5 + 32).toFixed(2);
+}
