@@ -59,7 +59,7 @@ function createContainer(data) {
 
   const title = document.createElement("h2");
   title.classList.add("title");
-  title.textContent = `${data.name}, ${countryCodes.of(data.sys.country)}`;
+  title.textContent = `${data.name},  ${countryCodes.of(data.sys.country)}`;
   const current = document.createElement("div");
   current.classList.add("main-temp");
   const description = document.createElement("div");
@@ -99,7 +99,7 @@ function convertTemp(temp, units) {
   if (units === "celcius") return Math.round(temp);
 
   // + String conversion is used to drop  extra 0s ie 15.00
-  return Math.round(((temp * 9) / 5 + 32))
+  return Math.round((temp * 9) / 5 + 32);
 }
 
 displayWeather();

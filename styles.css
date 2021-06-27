@@ -8,6 +8,7 @@
   --tertCol: #576ca8;
   --whiteCol: #f5f3f5;
   --blackCol: #302b27;
+  --highlightCol: #ec6e4c;
 }
 
 *,
@@ -50,6 +51,7 @@ header {
   align-items: center;
   color: var(--whiteCol);
   background-color: var(--secCol);
+  border-bottom: 6px solid var(--highlightCol);
 }
 
 .site-logo {
@@ -114,6 +116,7 @@ main {
 .title {
   grid-area: title;
   margin: 0;
+  word-spacing: 6px;
 }
 
 .main-temp {
@@ -148,6 +151,7 @@ footer {
   justify-content: center;
   align-items: center;
   font-weight: bold;
+  border-top: 3px solid var(--highlightCol);
 }
 
 footer img {
