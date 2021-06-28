@@ -171,6 +171,7 @@ footer > a:hover {
 }
 
 /* Slider toggle ==================================*/
+
 /* From w3schools  for slider  https://www.w3schools.com/howto/howto_css_switch.asp */
 /* The switch - the box around the slider */
 .switch {
@@ -189,7 +190,7 @@ footer > a:hover {
 
 /* The slider */
 .slider {
-  outline: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   position: absolute;
   cursor: pointer;
   top: 0;
