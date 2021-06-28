@@ -261,4 +261,9 @@ input:checked + .slider:before {
   footer {
     font-size: 1.6rem;
   }
+
+  footer img {
+    width: 2.5rem;
+    height: auto;
+  }
 }
