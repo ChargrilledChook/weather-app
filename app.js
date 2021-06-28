@@ -32,10 +32,8 @@ error.textContent = "Couldn't find that place - did you spell it correctly?";
 async function fetchData() {
   const searchTerm = document.querySelector("input").value || defaultCity;
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&appid=${key}&units=metric`;
-  console.log(url);
   const response = await fetch(url, { mode: "cors" });
   const data = await response.json();
-  console.table(data);
   return data;
 }
 
@@ -47,7 +45,6 @@ async function displayWeather(event) {
     main.innerHTML = "";
     main.append(loading);
     const data = await fetchData();
-    console.log(data);
     main.innerHTML = "";
     if (data.cod === "400" || data.cod === "404") return main.append(error);
 
