@@ -1,28 +1,36 @@
-// Standard internationalisation API, which we use to convert country codes to country names
-const countryCodes = new Intl.DisplayNames(["en"], { type: "region" });
-
-const key = "bcd9efe90d4b0bbc5b7e653dc9004c70";
-
+// DOM Selectors =================================
+const headerIcon = document.querySelector("#head-icon");
 const button = document.querySelector("#geo-search");
-button.addEventListener("click", displayWeather);
-
+const toggle = document.querySelector(".switch input");
 const main = document.querySelector("main");
 
-const toggle = document.querySelector(".switch input");
-
-const headerIcon = document.querySelector("#head-icon");
-
+// Top level variables / declarations =================================
+// Standard internationalisation API, which we use to convert country codes to country names
+const countryCodes = new Intl.DisplayNames(["en"], { type: "region" });
+// Obviously not ideal to have a key sitting here in plain text but somewhat unavoidable in this implementation
+const key = "bcd9efe90d4b0bbc5b7e653dc9004c70";
 let units = "celcius";
+let currentData;
+const defaultCity = "newcastle";
+
+// Listeners =================================
+button.addEventListener("click", displayWeather);
 
 toggle.addEventListener("click", () => {
   units = units === "celcius" ? "fahrenheit" : "celcius";
   updateData(currentData);
 });
 
-let currentData;
+// Helper divs =================================
+const loading = document.createElement("div");
+loading.textContent = "Loading...";
 
+const error = document.createElement("div");
+error.textContent = "Couldn't find that place - did you spell it correctly?";
+
+// Core Logic =================================
 async function fetchData() {
-  const searchTerm = document.querySelector("input").value || "newcastle";
+  const searchTerm = document.querySelector("input").value || defaultCity;
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&appid=${key}&units=metric`;
   console.log(url);
   const response = await fetch(url, { mode: "cors" });
@@ -47,12 +55,15 @@ async function displayWeather(event) {
   }
 }
 
+// After an api call we cache the data in a variable, so we can convert between C and F without another call
+// This re-renders data in that case
 function updateData(data) {
   const updated = createContainer(data);
   main.innerHTML = "";
   main.append(updated);
 }
 
+// TODO FIX Way too long, break down
 function createContainer(data) {
   const container = document.createElement("div");
   container.classList.add("container");
@@ -89,17 +100,12 @@ function createContainer(data) {
   return container;
 }
 
-const loading = document.createElement("div");
-loading.textContent = "Loading...";
-
-const error = document.createElement("div");
-error.textContent = "Couldn't find that place - did you spell it correctly?";
-
+// Helper functions =================================
 function convertTemp(temp, units) {
   if (units === "celcius") return Math.round(temp);
 
-  // + String conversion is used to drop  extra 0s ie 15.00
   return Math.round((temp * 9) / 5 + 32);
 }
 
+// Immediately load some data on pageload
 displayWeather();
