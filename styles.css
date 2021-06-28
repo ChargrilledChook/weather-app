@@ -174,7 +174,6 @@ footer > a:hover {
 /* From w3schools  for slider  https://www.w3schools.com/howto/howto_css_switch.asp */
 /* The switch - the box around the slider */
 .switch {
-  outline: none;
   position: relative;
   display: inline-block;
   width: 60px;
@@ -190,6 +189,7 @@ footer > a:hover {
 
 /* The slider */
 .slider {
+  outline: none;
   position: absolute;
   cursor: pointer;
   top: 0;
