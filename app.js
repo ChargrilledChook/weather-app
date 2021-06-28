@@ -1,6 +1,6 @@
 // DOM Selectors =================================
 const headerIcon = document.querySelector("#head-icon");
-const button = document.querySelector("#geo-search");
+const button = document.querySelector("#search-btn");
 const toggle = document.querySelector(".switch input");
 const main = document.querySelector("main");
 
@@ -40,6 +40,7 @@ async function fetchData() {
 }
 
 async function displayWeather(event) {
+  // REFACTOR Try block so we can load straight away without the form. There is probably a better solution
   try {
     event.preventDefault();
   } finally {
@@ -63,7 +64,8 @@ function updateData(data) {
   main.append(updated);
 }
 
-// TODO FIX Way too long, break down
+// REFACTOR Way too long, break down. Not complex just bulky due to
+// creating a lot of divs
 function createContainer(data) {
   const container = document.createElement("div");
   container.classList.add("container");
