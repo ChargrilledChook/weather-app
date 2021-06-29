@@ -1,6 +1,8 @@
 # weather-app
 
-API Practice for TOP
+A small project to practice async / await functions, promises and working with external APIs.
+
+Currently rewriting this doc WIP
 
 [Kanban Board](https://github.com/ChargrilledChook/weather-app/projects/1)
 
@@ -8,9 +10,11 @@ API Practice for TOP
 
 [Openweather API](https://openweathermap.org/)
 
-Not quite complete, current deployment is to assist with mobile testing
-
 ### About
+
+Mobile responsive
+
+Current version should be considered a proof of concept rather than a fully fledged app; certain key features are missing. For instance there is currently no way to search for Stanmore, Sydney, versus Stanmore, UK.
 
 ### Tools used
 
@@ -43,5 +47,9 @@ Running this app locally requires no special dependencies - simply clone this re
 - [ ] Entering an empty input will load the default city (that is seen on page load) - this is not the worst solution but there's probably better ways (ie form validation)
 - [ ] Required flag on form is not working
 - [ ] Create container is too long and needs refactoring
+- [ ] Should probably process the data I get back into an object with only the fields I need
 
 ### Reflections
+
+- Definitely prefer asysnc / away syntax to promises, but still important to understand promise syntax
+- What is the best way to get data directly out of an aysnc function, without top level async? I went with a side effect here but doesn't feel optimal
