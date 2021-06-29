@@ -18,6 +18,7 @@ Not quite complete, current deployment is to assist with mobile testing
 - The [Openweather API](https://openweathermap.org/)
 - Google fonts
 - Material Icons
+- CSS Normalize
 
 ### How to use
 
@@ -41,5 +42,6 @@ Running this app locally requires no special dependencies - simply clone this re
 - [ ] Revisit design in general - not terrible, but feel it lacks something
 - [ ] Entering an empty input will load the default city (that is seen on page load) - this is not the worst solution but there's probably better ways (ie form validation)
 - [ ] Required flag on form is not working
+- [ ] Create container is too long and needs refactoring
 
 ### Reflections
